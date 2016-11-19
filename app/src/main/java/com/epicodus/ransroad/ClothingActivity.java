@@ -1,6 +1,7 @@
 package com.epicodus.ransroad;
 
 import android.graphics.Typeface;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ClothingActivity extends AppCompatActivity {
+public class ClothingActivity extends AppCompatActivity{
     @Bind(R.id.clothingTitleTextView) TextView mClothingTitleTextView;
     @Bind(R.id.clothingListView) ListView mClothingListView;
     private String[] clothings = new String[] {"Front and Rear lights", "Fenders", "Water bottle", "Medium weight wool socks", "Lightweight boots",
@@ -22,7 +23,7 @@ public class ClothingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weather);
+        setContentView(R.layout.activity_clothing);
         ButterKnife.bind(this);
 
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
