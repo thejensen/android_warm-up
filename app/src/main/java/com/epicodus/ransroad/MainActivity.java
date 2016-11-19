@@ -35,9 +35,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         String latitude = mLatitudeEditText.getText().toString();
         String longitude = mLongitudeEditText.getText().toString();
-        Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
-        intent.putExtra("latitude", latitude);
-        intent.putExtra("longitude", longitude);
-        startActivity(intent);
+        if(mLatitudeEditText.getText().toString().length() == 0) {
+            mLatitudeEditText.setError("Latitude is required");
+        }
+        else if(mLongitudeEditText.getText().toString().length() == 0) {
+            mLongitudeEditText.setError("Longitude is required");
+        }
+        else {
+            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
+            intent.putExtra("latitude", latitude);
+            intent.putExtra("longitude", longitude);
+            startActivity(intent);
+        }
     }
 }

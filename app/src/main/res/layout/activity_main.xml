@@ -62,11 +62,11 @@
         android:textSize="24sp" />
 
     <TextView
-        android:text="Rán's Road"
+        android:text="Warm Up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/titleTextView"
-        tools:text="Rán's Road"
+        tools:text="Warm Up"
         android:textSize="36sp"
         android:textColor="@color/colorPrimaryText"
         android:layout_below="@+id/textClockMain"
