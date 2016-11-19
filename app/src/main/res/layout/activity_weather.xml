@@ -38,14 +38,23 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Button"
+        android:text="Get Clothing Suggestions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/weatherTitleTextView"
-        android:layout_marginTop="529dp"
         android:id="@+id/getClothingButton"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent" />
+
+    <TextView
+        android:text="This is where the weather responses would go!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weatherTitleTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:id="@+id/weatherTextView" />
 
 
 </RelativeLayout>
