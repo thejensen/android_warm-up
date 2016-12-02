@@ -45,11 +45,13 @@ public class DarkSkyService {
         try {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
-                Log.v(TAG, "SUCCESSSSSful response");
-                JSONObject weatherObject = new JSONObject(jsonData);
-                JSONObject resultsJSON = weatherObject.getJSONObject("currently");
-                String temperature = resultsJSON.getString("temperature");
-                Log.v(TAG, "resultsJson: " + resultsJSON + ", yay!");
+                JSONObject weatherJSON = new JSONObject(jsonData);
+                JSONObject currentWeatherJSON = weatherJSON.getJSONObject("currently");
+                String latitude = weatherJSON.getString("latitude");
+                String temperature = currentWeatherJSON.getString("temperature");
+                Log.v(TAG, "Weather object: " + weatherJSON);
+                Log.v(TAG, "lat: " + latitude);
+                Log.v(TAG, "temp: " + temperature + ", yay!");
             }
         } catch (IOException e) {
             e.printStackTrace();

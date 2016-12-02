@@ -62,13 +62,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
-                    mWeather = darkSkyService.processResults(response);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mWeather = darkSkyService.processResults(response);
             }
         });
     }
