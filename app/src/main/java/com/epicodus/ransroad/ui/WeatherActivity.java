@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.epicodus.ransroad.adapter.WeatherListAdapter;
 import com.epicodus.ransroad.models.Weather;
 import com.epicodus.ransroad.services.DarkSkyService;
 
@@ -28,6 +31,8 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
     public static final String TAG = WeatherActivity.class.getSimpleName();
     @Bind(R.id.weatherTitleTextView) TextView mWeatherTitleTextView;
     @Bind(R.id.getClothingButton) Button mGetClothingButton;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private WeatherListAdapter mAdapter;
 
     public ArrayList<Weather> mWeathers = new ArrayList<>();
 
@@ -68,26 +73,15 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
             public void onResponse(Call call, Response response) throws IOException {
                 mWeathers = darkSkyService.processResults(response);
 
-                Log.v(TAG, "mWeathers: " + mWeathers);
                 WeatherActivity.this.runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
-                        String[] weatherTemperatures = new String [mWeathers.size()];
-                        for (int i = 0; i < weatherTemperatures.length; i++) {
-                            weatherTemperatures[i] = mWeathers.get(i).getmTemperature();
-                        }
-//                        ArrayAdapter adapter = new ArrayAdapter(WeatherActivity.this, android.R.layout.simple_list_item_1, weatherTemperatures);
-//                        mListView.setAdapter(adapter);
-
-                        for (Weather weather : mWeathers) {
-                            Log.d(TAG, "Summary: " + weather.getmSummary());
-                            Log.d(TAG, "Precip Intensity: " + weather.getmPrecipIntensity());
-                            Log.d(TAG, "Precip Probability: " + weather.getmPrecipProbability());
-                            Log.d(TAG, "Feels like: " + weather.getmTempFeelsLike());
-                            Log.d(TAG, "Wind bearing: " + weather.getmWindBearing());
-                            Log.d(TAG, "Wind speed: " + weather.getmWindSpeed());
-                        }
+                        mAdapter = new WeatherListAdapter(mWeathers, getApplicationContext());
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WeatherActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
                     }
                 });
             }
