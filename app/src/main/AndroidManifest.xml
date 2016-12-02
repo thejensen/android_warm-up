@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.epicodus.ransroad">
+    package="com.epicodus.ransroad.ui">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="MainActivity"
             android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,17 +17,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".WeatherActivity">
+            android:name="WeatherActivity">
                 <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.epicodus.ransroad.MainActivity">
+                    android:value="com.epicodus.ransroad.ui.MainActivity">
                 </meta-data>
         </activity>
         <activity
-            android:name=".ClothingActivity">
+            android:name="ClothingActivity">
                 <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.epicodus.ransroad.MainActivity">
+                    android:value="com.epicodus.ransroad.ui.MainActivity">
                 </meta-data>
         </activity>
     </application>
