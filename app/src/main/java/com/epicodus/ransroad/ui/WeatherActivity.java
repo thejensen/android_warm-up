@@ -24,6 +24,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
     @Bind(R.id.weatherTitleTextView) TextView mWeatherTitleTextView;
     @Bind(R.id.weatherTextView) TextView mWeatherTextView;
     @Bind(R.id.getClothingButton) Button mGetClothingButton;
+    public String mWeather = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +54,18 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         final DarkSkyService darkSkyService = new DarkSkyService();
         String location = latitude + "," + longitude;
         darkSkyService.findWeather(location, new Callback() {
+
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
             }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     String jsonData = response.body().string();
                     Log.v(TAG, jsonData);
+                    mWeather = darkSkyService.processResults(response);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
