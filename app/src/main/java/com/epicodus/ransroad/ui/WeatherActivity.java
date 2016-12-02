@@ -4,14 +4,23 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.epicodus.ransroad.DarkSkyService.DarkSkyService;
+
+import java.io.IOException;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class WeatherActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final String TAG = WeatherActivity.class.getSimpleName();
     @Bind(R.id.weatherTitleTextView) TextView mWeatherTitleTextView;
     @Bind(R.id.weatherTextView) TextView mWeatherTextView;
     @Bind(R.id.getClothingButton) Button mGetClothingButton;
@@ -31,11 +40,32 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         mWeatherTextView.setText("This would be the weather information for " + latitude + ", " + longitude);
 
         mGetClothingButton.setOnClickListener(this);
+        getWeather(latitude, longitude);
     }
 
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(WeatherActivity.this, ClothingActivity.class);
         startActivity(intent);
+    }
+
+    private void getWeather(String latitude, String longitude) {
+        final DarkSkyService darkSkyService = new DarkSkyService();
+        String location = latitude + "," + longitude;
+        darkSkyService.findWeather(location, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    String jsonData = response.body().string();
+                    Log.v(TAG, jsonData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
