@@ -28,7 +28,6 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
     public static final String TAG = WeatherActivity.class.getSimpleName();
     @Bind(R.id.weatherTitleTextView) TextView mWeatherTitleTextView;
     @Bind(R.id.getClothingButton) Button mGetClothingButton;
-    @Bind(R.id.listView) ListView mListView;
 
     public ArrayList<Weather> mWeathers = new ArrayList<>();
 
@@ -78,8 +77,8 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
                         for (int i = 0; i < weatherTemperatures.length; i++) {
                             weatherTemperatures[i] = mWeathers.get(i).getmTemperature();
                         }
-                        ArrayAdapter adapter = new ArrayAdapter(WeatherActivity.this, android.R.layout.simple_list_item_1, weatherTemperatures);
-                        mListView.setAdapter(adapter);
+//                        ArrayAdapter adapter = new ArrayAdapter(WeatherActivity.this, android.R.layout.simple_list_item_1, weatherTemperatures);
+//                        mListView.setAdapter(adapter);
 
                         for (Weather weather : mWeathers) {
                             Log.d(TAG, "Summary: " + weather.getmSummary());

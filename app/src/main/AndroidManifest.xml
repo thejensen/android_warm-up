@@ -7,7 +7,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="RansRoad"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -19,14 +19,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="WeatherActivity">
-                <meta-data
+            android:name="WeatherActivity"
+            android:label="Warm Up">
+            <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.epicodus.ransroad.ui.MainActivity">
                 </meta-data>
         </activity>
         <activity
-            android:name="ClothingActivity">
+            android:name="ClothingActivity"
+            android:label="Warm Up">
                 <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.epicodus.ransroad.ui.MainActivity">
