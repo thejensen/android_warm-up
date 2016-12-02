@@ -4,14 +4,15 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.epicodus.ransroad.DarkSkyService.DarkSkyService;
+import com.epicodus.ransroad.models.Weather;
+import com.epicodus.ransroad.services.DarkSkyService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,7 +25,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
     @Bind(R.id.weatherTitleTextView) TextView mWeatherTitleTextView;
     @Bind(R.id.weatherTextView) TextView mWeatherTextView;
     @Bind(R.id.getClothingButton) Button mGetClothingButton;
-    public String mWeather = null;
+    public ArrayList<Weather> mWeather = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

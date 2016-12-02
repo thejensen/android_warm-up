@@ -1,13 +1,16 @@
-package com.epicodus.ransroad.DarkSkyService;
+package com.epicodus.ransroad.services;
 
 import android.util.Log;
 
 import com.epicodus.ransroad.Constants;
+import com.epicodus.ransroad.models.Weather;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -40,24 +43,31 @@ public class DarkSkyService {
         call.enqueue(callback);
     }
 
-    public String processResults(Response response) {
-        String weather = null;
+    public ArrayList<Weather> processResults(Response response) {
+        ArrayList<Weather> weatherResults = new ArrayList<>();
         try {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
                 JSONObject weatherJSON = new JSONObject(jsonData);
                 JSONObject currentWeatherJSON = weatherJSON.getJSONObject("currently");
-                String latitude = weatherJSON.getString("latitude");
+                String summary = currentWeatherJSON.getString("summary");
                 String temperature = currentWeatherJSON.getString("temperature");
-                Log.v(TAG, "Weather object: " + weatherJSON);
-                Log.v(TAG, "lat: " + latitude);
-                Log.v(TAG, "temp: " + temperature + ", yay!");
+                String tempFeelsLike = currentWeatherJSON.getString("apparentTemperature");
+                String precipIntensity = currentWeatherJSON.getString("precipIntensity");
+                String precipProbability = currentWeatherJSON.getString("precipProbability");
+                String windSpeed = currentWeatherJSON.getString("windSpeed");
+                String windBearing = currentWeatherJSON.getString("windBearing");
+
+                Weather weather = new Weather(summary, temperature, tempFeelsLike, precipIntensity, precipProbability, windSpeed, windBearing);
+
+                weatherResults.add(weather);
             }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return weather;
+        Log.v(TAG, "Yay!: " + weatherResults);
+        return weatherResults;
     }
 }
