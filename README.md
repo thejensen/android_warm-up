@@ -1,6 +1,6 @@
 # _Warm Up_
 
-#### _An Android app that shows basic weather information, precipitation prediction, and clothing suggestions based on temp and rain forecast, Nov 18, 2016_
+#### _An Android app that shows basic weather information, precipitation prediction, and clothing suggestions based on temp and rain forecast, Dec 2, 2016_
 
 #### By _**Sara Jensen**_
 
