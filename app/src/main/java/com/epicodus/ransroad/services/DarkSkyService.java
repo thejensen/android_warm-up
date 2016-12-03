@@ -51,12 +51,12 @@ public class DarkSkyService {
                 JSONObject weatherJSON = new JSONObject(jsonData);
                 JSONObject currentWeatherJSON = weatherJSON.getJSONObject("currently");
                 String summary = currentWeatherJSON.getString("summary");
-                String temperature = currentWeatherJSON.getString("temperature");
-                String tempFeelsLike = currentWeatherJSON.getString("apparentTemperature");
-                String precipIntensity = currentWeatherJSON.getString("precipIntensity");
-                String precipProbability = currentWeatherJSON.getString("precipProbability");
-                String windSpeed = currentWeatherJSON.getString("windSpeed");
-                String windBearing = currentWeatherJSON.getString("windBearing");
+                String temperature = currentWeatherJSON.getString("temperature") + " F";
+                String tempFeelsLike = currentWeatherJSON.getString("apparentTemperature") + " F";
+                String precipIntensity = "Precipitation Intensity is " + currentWeatherJSON.getString("precipIntensity");
+                String precipProbability = "Precipitation Probability is " + currentWeatherJSON.getString("precipProbability");
+                String windSpeed = "Wind Speed | " + currentWeatherJSON.getString("windSpeed");
+                String windBearing = "Wind Bearing | " + currentWeatherJSON.getString("windBearing");
 
                 Weather weather = new Weather(summary, temperature, tempFeelsLike, precipIntensity, precipProbability, windSpeed, windBearing);
 
@@ -67,7 +67,6 @@ public class DarkSkyService {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.v(TAG, "Yay!: " + weatherResults);
         return weatherResults;
     }
 }
