@@ -1,4 +1,4 @@
-# _Ran's Road_
+# _Warm Up_
 
 #### _An Android app that shows basic weather information, precipitation prediction, and clothing suggestions based on temp and rain forecast, Nov 18, 2016_
 
@@ -11,7 +11,7 @@ _Android Studio must be installed._
 * _In terminal, navigate to your Desktop_
 * _git clone https://github.com/thejensen/Android_Rans-Road_
 * _Open Android Studio_
-* _Open Ran's Road_
+* _Open Ran's Road (Yes, I've been changing the app name. This is the correct directory name!)_
 * _Click the green arrow to run the app in an emulator_
 
 ## Known Bugs
@@ -35,10 +35,10 @@ Copyright (c) 2016 **_MIT License_**
 ### Future Development
 
 * _Use zip code to search weather data, instead of lat/long._
-* _Link "Powered by Dark Sky" https://darksky.net/poweredby_
-* _1) Return current weather (temp, precip probability, precip intensity, summary for the day_
-* _2) Pick a time to bike this day, and return that hourly forecast, and the bike gear suggestions for that hour._
-* _3) Be able to pick multiple times throughout the day, save the gear suggestions, and remove duplicate suggestions from the list._
+* _Different lists for different weather params for bike gear suggestions_
+* _About Warm Up section_
+* _Pick a time to bike this day, and return that hourly forecast, and the bike gear suggestions for that hour._
+* _Be able to pick multiple times throughout the day, save the gear suggestions, and remove duplicate suggestions from the list._
 * _Create user profiles that save their location_
 * _Gear items can be saved to a list they want to find/purchase. (CRUD that list.)_
 * _Gear items in the purchase list show links and phone numbers to Next Adventure/REI/Other gear shops._
