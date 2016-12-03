@@ -1,82 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Summary"
+        android:id="@+id/summaryTextView"
+        android:layout_marginTop="30dp"
+        android:textSize="24dp"
+        android:gravity="center_horizontal"
+        android:paddingTop="40dp"
+        android:paddingBottom="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Summary"
-        android:id="@+id/summaryTextView"/>
+        android:id="@+id/temperatureTextView"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:text="Temperature"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal" />
 
-    <LinearLayout
-        android:orientation="vertical"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tempFeelsLikeTextView"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:text="Feels Like "
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precipitation Probability"
+        android:id="@+id/precipProbabilityTextView"
+        android:layout_below="@+id/temperatureTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="italic"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precipitation Intensity"
+        android:id="@+id/precipIntensityTextView"
+        android:layout_below="@+id/precipProbabilityTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="italic"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:fontFamily="sans-serif"
+        android:textAlignment="viewStart"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:background="#ffffff"
-        android:layout_height="match_parent"
-        android:padding="10dp">
+        android:layout_margin="16dp"
+        android:layout_height="28dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/temperatureTextView"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="Temperature"
-            android:textColor="@color/colorPrimary"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tempFeelsLikeTextView"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="Feels Like "
-            android:textColor="@color/colorPrimary"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Precipitation Probability"
-            android:id="@+id/precipProbabilityTextView"
-            android:layout_below="@+id/temperatureTextView"
+            android:text="Wind Speed"
+            android:id="@+id/windSpeedTextView"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="italic"/>
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorPrimaryDark"
+            android:paddingLeft="30dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Precipitation Intensity"
-            android:id="@+id/precipIntensityTextView"
-            android:layout_below="@+id/precipProbabilityTextView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="italic"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wind Speed"
-                android:id="@+id/windSpeedTextView"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:textColor="@color/colorAccent"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wind Bearing"
-                android:id="@+id/windBearingTextView"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/colorAccent"/>
-        </RelativeLayout>
-    </LinearLayout>
-
+            android:text="Wind Bearing"
+            android:id="@+id/windBearingTextView"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorPrimaryDark"
+            android:paddingRight="30dp" />
+    </RelativeLayout>
 </LinearLayout>
