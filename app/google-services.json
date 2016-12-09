@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "855289974415",
+    "firebase_url": "https://warm-up-7cc79.firebaseio.com",
+    "project_id": "warm-up-7cc79",
+    "storage_bucket": "warm-up-7cc79.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855289974415:android:8fb75afcc79c2305",
+        "android_client_info": {
+          "package_name": "com.epicodus.ransroad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855289974415-thj1iem30tpfcjo919qus2e7jbqehkj5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.ransroad",
+            "certificate_hash": "C3345B69F729B8B69404D31658BC3DAE5800307C"
+          }
+        },
+        {
+          "client_id": "855289974415-oqikc00ttigk494nhrfkgqcb9mq28ip3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGUkNNnDmE2zGF5St_RpdSrTFoso8Wd30"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "855289974415-oqikc00ttigk494nhrfkgqcb9mq28ip3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
