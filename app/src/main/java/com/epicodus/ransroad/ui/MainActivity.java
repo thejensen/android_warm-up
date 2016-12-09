@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.latitudeEditText) EditText mLatitudeEditText;
     @Bind(R.id.longitudeEditText) EditText mLongitudeEditText;
     @Bind(R.id.poweredByTextView) TextView mPoweredByTextView;
+    @Bind(R.id.createAccountTextView) TextView mCreateAccountTextView;
+    @Bind(R.id.loginTextView) TextView mLoginTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mGetWeatherButton.setOnClickListener(this);
         mPoweredByTextView.setOnClickListener(this);
+        mCreateAccountTextView.setOnClickListener(this);
+        mLoginTextView.setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +59,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://darksky.net/poweredby"));
             startActivity(webIntent);
+        }
+        if (v == mCreateAccountTextView) {
+            Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+            startActivity(intent);
+        }
+        if (v == mLoginTextView) {
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
         }
 
     }

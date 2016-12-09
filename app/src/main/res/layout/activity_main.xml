@@ -74,12 +74,33 @@
         android:layout_alignStart="@+id/latitudeEditText" />
 
     <TextView
+        android:text="Log In"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:id="@+id/loginTextView"
+        android:textSize="24sp"
+        android:textColor="@color/colorTextIcons"
+        android:layout_below="@+id/createAccountTextView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
         android:text="Powered by Dark Sky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/poweredByTextView"
         android:layout_below="@+id/titleTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:id="@+id/poweredByTextView" />
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Create an Account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createAccountTextView"
+        android:textSize="24sp"
+        android:textColor="@color/colorTextIcons"
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/poweredByTextView"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
