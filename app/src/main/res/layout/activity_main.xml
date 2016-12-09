@@ -53,6 +53,18 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
+        android:id="@+id/latitudeEditText"
+        android:hint=" latitude"
+        android:background="@color/colorPrimaryLight"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/longitudeEditText"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
         android:id="@+id/longitudeEditText"
         android:hint=" longitude"
         android:background="@color/colorPrimaryLight"
@@ -60,18 +72,6 @@
         android:layout_above="@+id/getWeatherButton"
         android:layout_alignLeft="@+id/latitudeEditText"
         android:layout_alignStart="@+id/latitudeEditText" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/latitudeEditText"
-        android:hint=" latitude"
-        android:background="@color/colorPrimaryLight"
-        android:layout_marginBottom="16dp"
-        android:layout_above="@+id/longitudeEditText"
-        android:layout_centerHorizontal="true" />
 
     <TextView
         android:text="Powered by Dark Sky"
