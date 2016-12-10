@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.poweredByTextView) TextView mPoweredByTextView;
     @Bind(R.id.createAccountTextView) TextView mCreateAccountTextView;
     @Bind(R.id.loginTextView) TextView mLoginTextView;
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
