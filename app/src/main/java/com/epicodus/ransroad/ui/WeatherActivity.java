@@ -6,11 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.epicodus.ransroad.adapter.WeatherListAdapter;
@@ -55,7 +52,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(WeatherActivity.this, ClothingActivity.class);
+        Intent intent = new Intent(WeatherActivity.this, ClothingListActivity.class);
         startActivity(intent);
     }
 

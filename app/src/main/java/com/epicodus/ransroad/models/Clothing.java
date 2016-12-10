@@ -9,16 +9,28 @@ import org.parceler.Parcel;
 @Parcel
 public class Clothing {
     private String item;
+    private String description;
+    private String imageURL;
     private String pushId;
 
     public Clothing() {}
 
-    public Clothing(String item) {
+    public Clothing(String item, String description, String imageURL) {
         this.item = item;
+        this.description = description;
+        this.imageURL = imageURL;
     }
 
     public String getItem() {
         return item;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getImageURL() {
+        return imageURL;
     }
 
     public void setPushId(String pushId) {

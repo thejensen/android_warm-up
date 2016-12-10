@@ -3,18 +3,14 @@ package com.epicodus.ransroad.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.epicodus.ransroad.Constants;
 import com.epicodus.ransroad.models.Clothing;
-import com.epicodus.ransroad.ui.ClothingActivity;
+import com.epicodus.ransroad.ui.ClothingListActivity;
 import com.epicodus.ransroad.ui.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.parceler.Parcels;
 
@@ -69,7 +65,7 @@ public class ClothingListAdapter extends RecyclerView.Adapter<ClothingListAdapte
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, ClothingActivity.class);
+            Intent intent = new Intent(mContext, ClothingListActivity.class);
             intent.putExtra("position", itemPosition);
             intent.putExtra("restaurants", Parcels.wrap(mClothingItems));
             mContext.startActivity(intent);
