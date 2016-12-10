@@ -1,5 +1,6 @@
 package com.epicodus.ransroad.ui;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,8 +25,9 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ClothingActivity extends AppCompatActivity{
+public class ClothingActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.clothingRecyclerView) RecyclerView mClothingRecyclerView;
+    @Bind(R.id.wishListButton) Button mWishListButton;
     private ClothingListAdapter mAdapter;
 
     public ArrayList<Clothing> mClothingItems = new ArrayList<>();
@@ -64,6 +67,8 @@ public class ClothingActivity extends AppCompatActivity{
         mClothingRecyclerView.setLayoutManager(layoutManager);
         mClothingRecyclerView.setHasFixedSize(true);
 
+        mWishListButton.setOnClickListener(this);
+
 //        mClothingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -72,6 +77,13 @@ public class ClothingActivity extends AppCompatActivity{
 //                saveClothingItemToFirebase(clothing);
 //            }
 //        });
+    }
+
+    public void onClick(View v) {
+        if (v == mWishListButton) {
+            Intent intent = new Intent(ClothingActivity.this, WishListActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void saveClothingItemToFirebase(String clothing) {
