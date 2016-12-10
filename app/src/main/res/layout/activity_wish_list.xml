@@ -4,10 +4,32 @@
     android:id="@+id/activity_wish_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.epicodus.ransroad.ui.WishList">
+    tools:context="com.epicodus.ransroad.ui.WishListActivity">
+
+    <TextClock
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:id="@+id/textClockWeather"
+        android:textSize="24sp" />
+
+    <TextView
+        android:text="Your Wish List"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wishListTitleTextView"
+        android:textSize="24sp"
+        android:textColor="@color/colorPrimaryText"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/textClockWeather"
+        android:layout_centerHorizontal="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wishListTitleTextView"
+        android:id="@+id/itemListRecyclerView"/>
 
 </RelativeLayout>
