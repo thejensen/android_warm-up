@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.epicodus.ransroad.Constants;
+import com.epicodus.ransroad.adapter.FirebaseClothingViewHolder;
 import com.epicodus.ransroad.models.Clothing;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -28,16 +29,16 @@ public class WishListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mClothingItemReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEM);
-        setUpFireBaseAdapter();
+        setUpFirebaseAdapter();
     }
 
     private void setUpFirebaseAdapter() {
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Clothing, FirebaseClothingItemViewHolder>
-                (Clothing.class, R.layout.clothing_list_item, FirebaseClothingItemViewHolder.class,
+        mFirebaseAdapter = new FirebaseRecyclerAdapter<Clothing, FirebaseClothingViewHolder>
+                (Clothing.class, R.layout.clothing_list_item, FirebaseClothingViewHolder.class,
                         mClothingItemReference) {
 
             @Override
-            protected void populateViewHolder(FirebaseClothingItemViewHolder viewHolder,
+            protected void populateViewHolder(FirebaseClothingViewHolder viewHolder,
                                               Clothing model, int position) {
                 viewHolder.bindClothingItem(model);
             }
@@ -52,5 +53,4 @@ public class WishListActivity extends AppCompatActivity {
         super.onDestroy();
         mFirebaseAdapter.cleanup();
     }
-}
 }
