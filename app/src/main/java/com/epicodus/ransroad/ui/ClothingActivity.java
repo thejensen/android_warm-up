@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.ransroad.Constants;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -47,7 +49,21 @@ public class ClothingActivity extends AppCompatActivity{
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String clothing = ((TextView)view).getText().toString();
                 Toast.makeText(ClothingActivity.this, clothing + " saved to 'Wish List'", Toast.LENGTH_LONG).show();
-                saveClothingItemToFirebase(clothing);
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = user.getUid();
+
+                DatabaseReference clothingRef = FirebaseDatabase
+                        .getInstance()
+                        .getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEM)
+                        .child(uid);
+
+                DatabaseReference pushRef = clothingRef.push();
+                String pushId = pushRef.getKey();
+                clothing.setPushId(pushId);
+                pushRef.setValue(clothing);
+
+//                saveClothingItemToFirebase(clothing);
             }
         });
     }

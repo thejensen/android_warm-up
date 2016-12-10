@@ -10,21 +10,19 @@
         android:label="Warm Up"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".WeatherActivity">
+        <activity android:name=".WeatherActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.ransroad.ui.MainActivity" />
         </activity>
-        <activity
-            android:name=".ClothingActivity">
+        <activity android:name=".ClothingActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.ransroad.ui.MainActivity" />
@@ -39,6 +37,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.ransroad.ui.MainActivity" />
         </activity>
+        <activity android:name=".WishList"></activity>
     </application>
 
 </manifest>
