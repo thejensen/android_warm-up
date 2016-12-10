@@ -28,6 +28,7 @@ import butterknife.ButterKnife;
 public class ClothingActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.clothingRecyclerView) RecyclerView mClothingRecyclerView;
     @Bind(R.id.wishListButton) Button mWishListButton;
+
     private ClothingListAdapter mAdapter;
 
     public ArrayList<Clothing> mClothingItems = new ArrayList<>();
@@ -65,21 +66,22 @@ public class ClothingActivity extends AppCompatActivity implements View.OnClickL
         mClothingRecyclerView.setHasFixedSize(true);
 
         mWishListButton.setOnClickListener(this);
-
-//        mClothingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                String clothing = ((TextView)view).getText().toString();
-//                Toast.makeText(ClothingActivity.this, clothing + " saved to 'Wish List'", Toast.LENGTH_LONG).show();
-//                saveClothingItemToFirebase(clothing);
-//            }
-//        });
     }
 
     public void onClick(View v) {
         if (v == mWishListButton) {
             Intent intent = new Intent(ClothingActivity.this, WishListActivity.class);
             startActivity(intent);
+        }
+//        How do I get a single object from the recyclerView? Is this something I can do? You can implement the onClickListener in the clothingListAdapter, and start an intent to send to this page with the individual clothing object in an arraylist???
+        if (v == ???) {
+            DatabaseReference restaurantRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEM);
+            restaurantRef.push().setValue(???);
+            String clothing = (???).getText().toString();
+            Toast.makeText(ClothingActivity.this, clothing + " saved to 'Wish List'", Toast.LENGTH_LONG).show();
+            saveClothingItemToFirebase(clothing);
         }
     }
 

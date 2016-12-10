@@ -1,19 +1,24 @@
 package com.epicodus.ransroad.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.epicodus.ransroad.Constants;
 import com.epicodus.ransroad.models.Clothing;
+import com.epicodus.ransroad.ui.ClothingActivity;
 import com.epicodus.ransroad.ui.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -22,6 +27,7 @@ import butterknife.ButterKnife;
  */
 
 public class ClothingListAdapter extends RecyclerView.Adapter<ClothingListAdapter.ClothingListViewHolder> {
+    public static final String TAG = ClothingListAdapter.class.getSimpleName();
     private ArrayList<Clothing> mClothingItems = new ArrayList<>();
     private Context mContext;
 
@@ -48,7 +54,7 @@ public class ClothingListAdapter extends RecyclerView.Adapter<ClothingListAdapte
     }
 
 
-    public class ClothingListViewHolder extends RecyclerView.ViewHolder {
+    public class ClothingListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.clothingItemTextView) TextView mClothingItemTextView;
 
         private Context mContext;
@@ -57,6 +63,16 @@ public class ClothingListAdapter extends RecyclerView.Adapter<ClothingListAdapte
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, ClothingActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("restaurants", Parcels.wrap(mClothingItems));
+            mContext.startActivity(intent);
         }
 
         public void bindClothingItem(Clothing clothing) {
