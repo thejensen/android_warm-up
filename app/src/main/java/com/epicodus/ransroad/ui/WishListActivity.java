@@ -35,7 +35,7 @@ public class WishListActivity extends AppCompatActivity {
                 .getInstance()
                 .getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEM)
                 .child(uid);
-        Log.v(TAG, "Ugh, what is this: " + mClothingItemReference);
+        Log.v(TAG, "Link to database id for clothing item: " + mClothingItemReference);
     }
 
 }
