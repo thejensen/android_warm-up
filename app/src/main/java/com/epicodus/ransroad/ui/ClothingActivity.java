@@ -57,9 +57,6 @@ public class ClothingActivity extends AppCompatActivity implements View.OnClickL
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
         mClothingTitleTextView.setTypeface(seasideFont);
 
-//        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, clothings);
-//        mClothingListView.setAdapter(adapter);
-
         mAdapter = new ClothingListAdapter(getApplicationContext(), mClothingItems);
         mClothingRecyclerView.setAdapter(mAdapter);
         RecyclerView.LayoutManager layoutManager =
