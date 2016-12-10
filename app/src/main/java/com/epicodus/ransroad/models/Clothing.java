@@ -5,13 +5,18 @@ package com.epicodus.ransroad.models;
  */
 
 public class Clothing {
-    private String mClothingItem;
+    private String item;
+    private String pushId;
 
-    public Clothing(String mClothingItem) {
-        this.mClothingItem = mClothingItem;
+    public Clothing(String item) {
+        this.item = item;
     }
 
-    public String getmClothingItem() {
-        return mClothingItem;
+    public String getItem() {
+        return item;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }

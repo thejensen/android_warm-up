@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.ransroad.Constants;
+import com.epicodus.ransroad.models.Clothing;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +27,7 @@ public class ClothingActivity extends AppCompatActivity{
     @Bind(R.id.clothingListView) ListView mClothingListView;
     private String[] clothings = new String[] {"Front and Rear lights", "Fenders", "Water bottle", "Medium weight wool socks", "Lightweight boots",
             "Long sleeve shirt or thin sweater", "Jeans", "Puffy jacket", "Gloves"};
+    private Clothing mClothingItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class ClothingActivity extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String clothing = ((TextView)view).getText().toString();
-                Toast.makeText(ClothingActivity.this, clothing + " saved to 'Wish List'", Toast.LENGTH_LONG).show();
+                mClothingItem = new Clothing(clothing);
 
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 String uid = user.getUid();
@@ -60,16 +62,11 @@ public class ClothingActivity extends AppCompatActivity{
 
                 DatabaseReference pushRef = clothingRef.push();
                 String pushId = pushRef.getKey();
-                clothing.setPushId(pushId);
-                pushRef.setValue(clothing);
+                mClothingItem.setPushId(pushId);
+                pushRef.setValue(mClothingItem);
 
-//                saveClothingItemToFirebase(clothing);
+                Toast.makeText(ClothingActivity.this, mClothingItem.getItem() + " saved to 'Wish List'", Toast.LENGTH_LONG).show();
             }
         });
     }
-
-    public void saveClothingItemToFirebase(String clothing) {
-        mClothingItemReference.push().setValue(clothing);
-    }
-
 }
