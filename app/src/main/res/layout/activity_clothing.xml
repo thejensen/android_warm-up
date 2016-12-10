@@ -37,12 +37,9 @@
         android:layout_below="@+id/textClockClothing"
         android:layout_centerHorizontal="true" />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/clothingTitleTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
-        android:id="@+id/clothingListView" />
+        android:id="@+id/recyclerView"/>
 
 </RelativeLayout>
