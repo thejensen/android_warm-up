@@ -22,6 +22,9 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class ClothingDetailFragment extends Fragment {
+    private static final int MAX_WIDTH = 400;
+    private static final int MAX_HEIGHT = 300;
+
     @Bind(R.id.addToWishListButton) Button mAddToWishListButton;
     @Bind(R.id.clothingImageView) ImageView mImageLabel;
     @Bind(R.id.clothingNameTextView) TextView mNameLabel;
@@ -49,7 +52,11 @@ public class ClothingDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_clothing_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext()).load(mClothing.getImageURL()).into(mImageLabel);
+        Picasso.with(view.getContext())
+                .load(mClothing.getImageURL())
+                .resize(MAX_WIDTH, MAX_HEIGHT)
+                .centerCrop()
+                .into(mImageLabel);
 
         mNameLabel.setText(mClothing.getItem());
         mDescriptionLabel.setText(mClothing.getDescription());
