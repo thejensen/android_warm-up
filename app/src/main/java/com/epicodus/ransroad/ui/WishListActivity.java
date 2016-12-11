@@ -1,9 +1,11 @@
 package com.epicodus.ransroad.ui;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.epicodus.ransroad.Constants;
 import com.epicodus.ransroad.adapter.FirebaseClothingViewHolder;
@@ -20,6 +22,7 @@ public class WishListActivity extends AppCompatActivity {
     private FirebaseRecyclerAdapter mFirebaseAdapter;
 
     @Bind(R.id.clothingRecyclerView) RecyclerView mClothingRecyclerView;
+    @Bind(R.id.clothingTitleTextView) TextView mClothingTitleTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,9 @@ public class WishListActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_clothing);
         ButterKnife.bind(this);
+
+        Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
+        mClothingTitleTextView.setTypeface(seasideFont);
 
         mClothingItemReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEMS);
         setUpFirebaseAdapter();
