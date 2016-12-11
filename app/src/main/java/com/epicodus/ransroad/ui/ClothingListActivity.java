@@ -59,7 +59,7 @@ public class ClothingListActivity extends AppCompatActivity implements View.OnCl
         mClothingItemReference = FirebaseDatabase
                 .getInstance()
                 .getReference()
-                .child(Constants.FIREBASE_CHILD_CLOTHING_ITEM);
+                .child(Constants.FIREBASE_CHILD_CLOTHING_ITEMS);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clothing);
@@ -87,7 +87,7 @@ public class ClothingListActivity extends AppCompatActivity implements View.OnCl
 //        if (v == ???) {
 //            DatabaseReference restaurantRef = FirebaseDatabase
 //                    .getInstance()
-//                    .getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEM);
+//                    .getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEMS);
 //            restaurantRef.push().setValue(???);
 //            String clothing = (???).getText().toString();
 //            Toast.makeText(ClothingListActivity.this, clothing + " saved to 'Wish List'", Toast.LENGTH_LONG).show();

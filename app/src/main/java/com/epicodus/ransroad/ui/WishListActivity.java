@@ -28,7 +28,7 @@ public class WishListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_clothing);
         ButterKnife.bind(this);
 
-        mClothingItemReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEM);
+        mClothingItemReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEMS);
         setUpFirebaseAdapter();
     }
 
