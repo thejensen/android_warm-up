@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.epicodus.ransroad.models.Clothing;
+import com.epicodus.ransroad.ui.ClothingDetailActivity;
 import com.epicodus.ransroad.ui.ClothingListActivity;
 import com.epicodus.ransroad.ui.R;
 
@@ -65,9 +66,9 @@ public class ClothingListAdapter extends RecyclerView.Adapter<ClothingListAdapte
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, ClothingListActivity.class);
+            Intent intent = new Intent(mContext, ClothingDetailActivity.class);
             intent.putExtra("position", itemPosition);
-            intent.putExtra("restaurants", Parcels.wrap(mClothingItems));
+            intent.putExtra("clothings", Parcels.wrap(mClothingItems));
             mContext.startActivity(intent);
         }
 
