@@ -37,24 +37,24 @@ public class ClothingListActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         Clothing item1 = new Clothing("Front and rear lights", "Front and rear lights are important to visibility in the dark.", "http://cyclesecrets.com/wp-content/uploads/2015/10/d9d707ee781c.jpg");
         Clothing item2 = new Clothing("Fenders", "Fenders, aka mudguards, attach to your wheels to shield you from the backsplash of water on the ground.", "http://www.sheldonbrown.com/images/rambouillet_frontquarter.jpg");
-        Clothing item3 = new Clothing("Water bottle", "", "");
-        Clothing item4 = new Clothing("Medium weight wool socks", "", "");
-        Clothing item5 = new Clothing("Long sleeve shirt", "", "");
-        Clothing item6 = new Clothing("Stretchy jeans", "", "");
-        Clothing item7 = new Clothing("Puffy jacket", "", "");
-        Clothing item8 = new Clothing("gloves", "", "");
-        Clothing item9 = new Clothing("Lightweight boots", "", "");
-        Clothing item10 = new Clothing("Ear warmer", "", "");
+//        Clothing item3 = new Clothing("Water bottle", "", "");
+//        Clothing item4 = new Clothing("Medium weight wool socks", "", "");
+//        Clothing item5 = new Clothing("Long sleeve shirt", "", "");
+//        Clothing item6 = new Clothing("Stretchy jeans", "", "");
+//        Clothing item7 = new Clothing("Puffy jacket", "", "");
+//        Clothing item8 = new Clothing("gloves", "", "");
+//        Clothing item9 = new Clothing("Lightweight boots", "", "");
+//        Clothing item10 = new Clothing("Ear warmer", "", "");
         mClothingItems.add(item1);
         mClothingItems.add(item2);
-        mClothingItems.add(item3);
-        mClothingItems.add(item4);
-        mClothingItems.add(item5);
-        mClothingItems.add(item6);
-        mClothingItems.add(item7);
-        mClothingItems.add(item8);
-        mClothingItems.add(item9);
-        mClothingItems.add(item10);
+//        mClothingItems.add(item3);
+//        mClothingItems.add(item4);
+//        mClothingItems.add(item5);
+//        mClothingItems.add(item6);
+//        mClothingItems.add(item7);
+//        mClothingItems.add(item8);
+//        mClothingItems.add(item9);
+//        mClothingItems.add(item10);
 
         mClothingItemReference = FirebaseDatabase
                 .getInstance()
