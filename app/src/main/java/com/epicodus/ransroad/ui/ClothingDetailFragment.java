@@ -2,6 +2,7 @@ package com.epicodus.ransroad.ui;
 
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.epicodus.ransroad.Constants;
 import com.epicodus.ransroad.models.Clothing;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -21,7 +26,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ClothingDetailFragment extends Fragment {
+public class ClothingDetailFragment extends Fragment implements View.OnClickListener {
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;
 
@@ -61,7 +66,21 @@ public class ClothingDetailFragment extends Fragment {
         mNameLabel.setText(mClothing.getItem());
         mDescriptionLabel.setText(mClothing.getDescription());
 
+        mAddToWishListButton.setOnClickListener(this);
+
         return view;
     }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mAddToWishListButton) {
+            DatabaseReference clothingItemRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEMS);
+            clothingItemRef.push().setValue(mClothing);
+            Toast.makeText(getContext(), "Saved to Wish List", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 }
