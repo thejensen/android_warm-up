@@ -32,6 +32,7 @@ public class FirebaseClothingViewHolder extends RecyclerView.ViewHolder implemen
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
+//        itemView.setOnClickListener(this);
     }
 
     public void bindClothingItem(Clothing clothingItem) {

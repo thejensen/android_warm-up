@@ -154,7 +154,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Log.d(TAG, user.getDisplayName());
+                            Log.d(TAG, "Um ok, " + user.getDisplayName());
                         }
                     }
                 });

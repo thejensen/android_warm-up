@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
+                    mCreateAccountTextView.setVisibility(View.GONE);
+                    mLoginTextView.setVisibility(View.GONE);
                 } else {
 
                 }
@@ -127,7 +129,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();
-        Toast.makeText(MainActivity.this, "You're logged out! Log in again to see your stuff.", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        Toast.makeText(MainActivity.this, "You are now logged out. Until next time!", Toast.LENGTH_LONG).show();
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 
     private void addToSharedPreferences(String zipcode) {
