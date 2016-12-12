@@ -13,6 +13,8 @@ import com.epicodus.ransroad.Constants;
 import com.epicodus.ransroad.adapter.FirebaseClothingViewHolder;
 import com.epicodus.ransroad.models.Clothing;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -31,9 +33,11 @@ public class WishListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_clothing);
         ButterKnife.bind(this);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
 
         mWishListButton.setVisibility(View.GONE);
         mClothingTitleTextView.setVisibility(View.GONE);
@@ -41,7 +45,11 @@ public class WishListActivity extends AppCompatActivity {
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
         mWishListTitleTextView.setTypeface(seasideFont);
 
-        mClothingItemReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEMS);
+        mClothingItemReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEMS)
+                .child(uid);
+
         setUpFirebaseAdapter();
     }
 
