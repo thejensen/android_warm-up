@@ -18,9 +18,10 @@ _Android Studio must be installed._
 
 Functional bugs
 * _Firebase User Profile bug: when a user creates an account for the first time, they will be greeted as "Welcome, null." If they log out and log back in again, they are greeted by their Firebase profile name._
-* _App crashes with no zip code saved to Shared Preferences_
+* _App crashes with no zip code saved to Shared Preferences._
 * _App crashes with "bad" zip code._
 * _Zip code currently not required._
+* _If user is unauthenticated, adding items to the wish list and going to the wish list activity crash that activity._
 
 UX bugs
 * _Wish List needs its own layout to distinguish it from the suggested bike gear list._
