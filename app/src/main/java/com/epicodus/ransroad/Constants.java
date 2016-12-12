@@ -14,5 +14,5 @@ public class Constants {
     public static final String ZIPCODEAPI_BASE_URL = "https://www.zipcodeapi.com/rest";
     public static final String ZIPCODEAPI_INFO_QUERY_PARAMETER = "info.json";
     public static final String ZIPCODEAPI_DEGREES_QUERY_PARAMETER = "degrees";
-
+    public static final String PREFERENCES_LOCATION_KEY = "location";
 }

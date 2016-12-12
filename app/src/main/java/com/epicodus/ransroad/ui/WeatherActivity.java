@@ -1,8 +1,10 @@
 package com.epicodus.ransroad.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.epicodus.ransroad.Constants;
 import com.epicodus.ransroad.adapter.WeatherListAdapter;
 import com.epicodus.ransroad.models.Location;
 import com.epicodus.ransroad.models.Weather;
@@ -29,6 +32,10 @@ import okhttp3.Response;
 
 public class WeatherActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = WeatherActivity.class.getSimpleName();
+
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
+
     @Bind(R.id.weatherTitleTextView) TextView mWeatherTitleTextView;
     @Bind(R.id.getClothingButton) Button mGetClothingButton;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -46,16 +53,16 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
         mWeatherTitleTextView.setTypeface(seasideFont);
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        Log.d("SharedPref Location", mRecentAddress);
+
         Intent intent = getIntent();
         String zipcode = intent.getStringExtra("zipcode");
-//        String latitude = intent.getStringExtra("latitude");
-//        String longitude = intent.getStringExtra("longitude");
 
         mGetClothingButton.setOnClickListener(this);
 
-//        Will get zip code shortly...
         getLatLong(zipcode);
-//        getWeather(latitude, longitude);
     }
 
     @Override
@@ -63,8 +70,6 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         Intent intent = new Intent(WeatherActivity.this, ClothingListActivity.class);
         startActivity(intent);
     }
-
-
 
     private void getLatLong(String zipcode) {
         final ZipCodeAPIService zipCodeAPIService = new ZipCodeAPIService();

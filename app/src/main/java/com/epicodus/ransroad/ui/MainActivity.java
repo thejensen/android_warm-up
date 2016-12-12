@@ -1,9 +1,11 @@
 package com.epicodus.ransroad.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -15,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.epicodus.ransroad.Constants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -22,6 +25,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+
     @Bind(R.id.titleTextView) TextView mTitleTextView;
     @Bind(R.id.getWeatherButton) Button mGetWeatherButton;
     @Bind(R.id.zipcodeEditText) EditText mZipcodeEditText;
@@ -39,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
 
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
         mTitleTextView.setTypeface(seasideFont);
@@ -80,21 +89,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mGetWeatherButton) {
             String zipcode = mZipcodeEditText.getText().toString();
-//            String latitude = mLatitudeEditText.getText().toString();
-//            String longitude = mLongitudeEditText.getText().toString();
-//            if(mLatitudeEditText.getText().toString().length() == 0) {
-//                mLatitudeEditText.setError("Latitude is required");
-//            }
-//            else if(mLongitudeEditText.getText().toString().length() == 0) {
-//                mLongitudeEditText.setError("Longitude is required");
-//            }
-//            else {
-                Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
-                intent.putExtra("zipcode", zipcode);
-//                intent.putExtra("latitude", latitude);
-//                intent.putExtra("longitude", longitude);
-                startActivity(intent);
-//            }
+            addToSharedPreferences(zipcode);
+            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
+            intent.putExtra("zipcode", zipcode);
+            startActivity(intent);
         }
         if (v == mPoweredByTextView) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
@@ -131,6 +129,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void logout() {
         FirebaseAuth.getInstance().signOut();
         Toast.makeText(MainActivity.this, "You're logged out! Log in again to see your stuff.", Toast.LENGTH_LONG).show();
+    }
+
+    private void addToSharedPreferences(String zipcode) {
+        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, zipcode).apply();
     }
 
 }
