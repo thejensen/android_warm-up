@@ -53,9 +53,6 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
         mWeatherTitleTextView.setTypeface(seasideFont);
 
-//        Intent intent = getIntent();
-//        String zipcode = intent.getStringExtra("zipcode");
-
         mGetClothingButton.setOnClickListener(this);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
