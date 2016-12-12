@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.epicodus.ransroad.adapter.WeatherListAdapter;
+import com.epicodus.ransroad.models.Location;
 import com.epicodus.ransroad.models.Weather;
 import com.epicodus.ransroad.services.DarkSkyService;
 import com.epicodus.ransroad.services.ZipCodeAPIService;
@@ -34,6 +35,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
     private WeatherListAdapter mAdapter;
 
     public ArrayList<Weather> mWeathers = new ArrayList<>();
+    public ArrayList<Location> mLocations = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,18 +76,16 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mLocations = ZipCodeAPIService.processLocationResults(response);
+                String latitude = mLocations.get(0).getLatitude();
+                String longitude = mLocations.get(0).getLongitude();
+                Log.v(TAG, "Lat and long are" + latitude + " & " + longitude);
+
+                getWeather(latitude, longitude);
             }
         });
     }
 
-
-//    Put getWeather in the getLatLong function...? Thanks Java for running one line at a time, yeah?
     private void getWeather(String latitude, String longitude) {
         final DarkSkyService darkSkyService = new DarkSkyService();
         String location = latitude + "," + longitude;

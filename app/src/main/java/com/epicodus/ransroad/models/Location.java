@@ -7,10 +7,14 @@ package com.epicodus.ransroad.models;
 public class Location {
     private String mLatitude;
     private String mLongitude;
+    private String mCity;
+    private String mState;
 
-    public Location(String mLatitude, String mLongitude) {
-        this.mLatitude = mLatitude;
+    public Location(String mState, String mCity, String mLongitude, String mLatitude) {
+        this.mState = mState;
+        this.mCity = mCity;
         this.mLongitude = mLongitude;
+        this.mLatitude = mLatitude;
     }
 
     public String getLatitude() {
@@ -19,5 +23,13 @@ public class Location {
 
     public String getLongitude() {
         return mLongitude;
+    }
+
+    public String getCity() {
+        return mCity;
+    }
+
+    public String getState() {
+        return mState;
     }
 }
