@@ -48,29 +48,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/latitudeEditText"
-        android:hint=" latitude"
-        android:background="@color/colorPrimaryLight"
-        android:layout_marginBottom="16dp"
-        android:layout_above="@+id/longitudeEditText"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/longitudeEditText"
-        android:hint=" longitude"
-        android:background="@color/colorPrimaryLight"
-        android:layout_marginBottom="86dp"
-        android:layout_above="@+id/getWeatherButton"
-        android:layout_alignLeft="@+id/latitudeEditText"
-        android:layout_alignStart="@+id/latitudeEditText" />
-
     <TextView
         android:text="Log In"
         android:layout_width="wrap_content"
@@ -105,12 +82,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:textSize="24sp"
         android:layout_below="@+id/loginTextView"
-        android:layout_alignRight="@+id/latitudeEditText"
-        android:layout_alignEnd="@+id/latitudeEditText"
         android:layout_marginTop="58dp"
         android:id="@+id/zipcodeEditText"
-        android:hint="zip code"
-        android:background="@color/colorPrimaryLight" />
+        android:hint="  zip code"
+        android:inputType="number"
+        android:background="@color/colorPrimaryLight"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

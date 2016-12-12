@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.titleTextView) TextView mTitleTextView;
     @Bind(R.id.getWeatherButton) Button mGetWeatherButton;
     @Bind(R.id.zipcodeEditText) EditText mZipcodeEditText;
-    @Bind(R.id.latitudeEditText) EditText mLatitudeEditText;
-    @Bind(R.id.longitudeEditText) EditText mLongitudeEditText;
     @Bind(R.id.poweredByTextView) TextView mPoweredByTextView;
     @Bind(R.id.createAccountTextView) TextView mCreateAccountTextView;
     @Bind(R.id.loginTextView) TextView mLoginTextView;
