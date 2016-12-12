@@ -47,6 +47,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         String longitude = intent.getStringExtra("longitude");
 
         mGetClothingButton.setOnClickListener(this);
+
         getWeather(latitude, longitude);
     }
 

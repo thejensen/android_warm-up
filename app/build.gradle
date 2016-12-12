@@ -31,6 +31,7 @@ android {
     }
     buildTypes.each {
         it.buildConfigField('String', 'DARK_SKY_API_KEY', DarkSkyApiKey);
+        it.buildConfigField('String', 'ZIPCODEAPI_API_KEY', ZipCodeAPIKey);
     }
 }
 
