@@ -34,6 +34,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
     public static final String TAG = WeatherActivity.class.getSimpleName();
 
     private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
     private String mRecentAddress;
 
     @Bind(R.id.weatherTitleTextView) TextView mWeatherTitleTextView;
@@ -116,5 +117,9 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
                 });
             }
         });
+    }
+
+    private void addToSharedPreferences(String zipcode) {
+        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, zipcode).apply();
     }
 }
