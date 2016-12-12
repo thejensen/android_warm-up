@@ -106,7 +106,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         mAuthProgressDialog.dismiss();
                         if (task.isSuccessful()) {
-                            Log.d(TAG, "Authentication successful");
+                            Log.d(TAG, "Authentication successful with, " + task.getResult().getUser());
                             createFirebaseUserProfile(task.getResult().getUser());
                         } else {
                             Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
@@ -149,12 +149,13 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         UserProfileChangeRequest addProfileName = new UserProfileChangeRequest.Builder()
                 .setDisplayName(mName)
                 .build();
-        user.updateProfile(addProfileName)
+
+            user.updateProfile(addProfileName)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Log.d(TAG, "Um ok, " + user.getDisplayName());
+                            Log.d(TAG, "User display name: " + user.getDisplayName());
                         }
                     }
                 });
