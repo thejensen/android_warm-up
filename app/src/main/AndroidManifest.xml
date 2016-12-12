@@ -25,7 +25,7 @@
         <activity android:name=".ClothingListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.ransroad.ui.MainActivity" />
+                android:value="com.epicodus.ransroad.ui.WeatherActivity" />
         </activity>
         <activity android:name=".LoginActivity">
             <meta-data
