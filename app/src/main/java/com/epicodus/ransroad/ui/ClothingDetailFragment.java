@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.epicodus.ransroad.Constants;
 import com.epicodus.ransroad.models.Clothing;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -79,10 +81,19 @@ public class ClothingDetailFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (v == mAddToWishListButton) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+
             DatabaseReference clothingItemRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEMS);
-            clothingItemRef.push().setValue(mClothing);
+                    .getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEMS)
+                    .child(uid);
+
+            DatabaseReference pushRef = clothingItemRef.push();
+            String pushId = pushRef.getKey();
+            mClothing.setPushId(pushId);
+            pushRef.setValue(mClothing);
+
             Toast.makeText(getContext(), "Saved to Wish List", Toast.LENGTH_SHORT).show();
         }
         if (v == mWishListButton) {
