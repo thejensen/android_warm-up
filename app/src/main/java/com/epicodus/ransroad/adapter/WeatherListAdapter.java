@@ -69,7 +69,6 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
             mPrecipProbabilityTextView.setText(weather.getmPrecipProbability());
             mWindSpeedTextView.setText(weather.getmWindSpeed());
             mWindBearingTextView.setText(weather.getmWindBearing());
-
         }
     }
 }
