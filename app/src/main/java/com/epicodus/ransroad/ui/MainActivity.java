@@ -89,9 +89,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mGetWeatherButton) {
             String zipcode = mZipcodeEditText.getText().toString();
-            addToSharedPreferences(zipcode);
+            if (!(zipcode).equals("")) {
+                addToSharedPreferences(zipcode);
+            }
             Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
-            intent.putExtra("zipcode", zipcode);
             startActivity(intent);
         }
         if (v == mPoweredByTextView) {

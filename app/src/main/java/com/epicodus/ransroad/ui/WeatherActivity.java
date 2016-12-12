@@ -53,16 +53,17 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
         mWeatherTitleTextView.setTypeface(seasideFont);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        Log.d("SharedPref Location", mRecentAddress);
-
-        Intent intent = getIntent();
-        String zipcode = intent.getStringExtra("zipcode");
+//        Intent intent = getIntent();
+//        String zipcode = intent.getStringExtra("zipcode");
 
         mGetClothingButton.setOnClickListener(this);
 
-        getLatLong(zipcode);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        if (mRecentAddress != null) {
+            getLatLong(mRecentAddress);
+        }
+
     }
 
     @Override
