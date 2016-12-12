@@ -32,6 +32,7 @@ public class ClothingListActivity extends AppCompatActivity implements View.OnCl
     private DatabaseReference mClothingItemReference;
 
     @Bind(R.id.clothingTitleTextView) TextView mClothingTitleTextView;
+    @Bind(R.id.wishListTitleTextView) TextView mWishListTitleTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,8 @@ public class ClothingListActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clothing);
         ButterKnife.bind(this);
+
+        mWishListTitleTextView.setVisibility(View.GONE);
 
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
         mClothingTitleTextView.setTypeface(seasideFont);

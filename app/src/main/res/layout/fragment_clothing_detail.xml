@@ -12,7 +12,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="360dp"
+            android:layout_height="300dp"
             android:id="@+id/clothingImageView"
             android:src="@drawable/koi"
             android:scaleType="centerCrop" />
@@ -72,10 +72,22 @@
                 android:layout_height="wrap_content"
                 android:text="Save Item to Wish List"
                 android:id="@+id/addToWishListButton"
-                android:layout_alignParentBottom="true"
-                android:background="@color/colorAccent"
+                android:layout_above="@+id/wishListButton"
+                android:background="@color/colorPrimaryLight"
                 android:textColor="@color/colorTextIcons"
                 android:textSize="15sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My Wish List"
+                android:id="@+id/wishListButton"
+                android:background="@color/colorAccent"
+                android:textColor="@color/colorTextIcons"
+                android:visibility="visible"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
         </RelativeLayout>
     </LinearLayout>
 </FrameLayout>

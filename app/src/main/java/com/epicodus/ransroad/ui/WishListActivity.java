@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.epicodus.ransroad.Constants;
@@ -23,6 +25,8 @@ public class WishListActivity extends AppCompatActivity {
 
     @Bind(R.id.clothingRecyclerView) RecyclerView mClothingRecyclerView;
     @Bind(R.id.clothingTitleTextView) TextView mClothingTitleTextView;
+    @Bind(R.id.wishListTitleTextView) TextView mWishListTitleTextView;
+    @Bind(R.id.wishListButton) Button mWishListButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +35,11 @@ public class WishListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_clothing);
         ButterKnife.bind(this);
 
+        mWishListButton.setVisibility(View.GONE);
+        mClothingTitleTextView.setVisibility(View.GONE);
+
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
-        mClothingTitleTextView.setTypeface(seasideFont);
+        mWishListTitleTextView.setTypeface(seasideFont);
 
         mClothingItemReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEMS);
         setUpFirebaseAdapter();

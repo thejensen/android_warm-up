@@ -1,8 +1,10 @@
 package com.epicodus.ransroad.ui;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,8 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class ClothingDetailFragment extends Fragment implements View.OnClickListener {
+    public static final String TAG = ClothingDetailFragment.class.getSimpleName();
+
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;
 
@@ -33,6 +37,7 @@ public class ClothingDetailFragment extends Fragment implements View.OnClickList
     @Bind(R.id.clothingImageView) ImageView mImageLabel;
     @Bind(R.id.clothingNameTextView) TextView mNameLabel;
     @Bind(R.id.clothingDescriptionTextView) TextView mDescriptionLabel;
+    @Bind(R.id.wishListButton) Button mWishListButton;
 
     private Clothing mClothing;
 
@@ -66,6 +71,7 @@ public class ClothingDetailFragment extends Fragment implements View.OnClickList
         mDescriptionLabel.setText(mClothing.getDescription());
 
         mAddToWishListButton.setOnClickListener(this);
+        mWishListButton.setOnClickListener(this);
 
         return view;
     }
@@ -78,6 +84,10 @@ public class ClothingDetailFragment extends Fragment implements View.OnClickList
                     .getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEMS);
             clothingItemRef.push().setValue(mClothing);
             Toast.makeText(getContext(), "Saved to Wish List", Toast.LENGTH_SHORT).show();
+        }
+        if (v == mWishListButton) {
+            Intent intent = new Intent(getActivity(), WishListActivity.class);
+            startActivity(intent);
         }
     }
 

@@ -37,6 +37,17 @@
         android:layout_below="@+id/textClockClothing"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:text="Bike Gear Wish List"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wishListTitleTextView"
+        android:textSize="24sp"
+        android:textColor="@color/colorPrimaryText"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/textClockClothing"
+        android:layout_centerHorizontal="true" />
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
