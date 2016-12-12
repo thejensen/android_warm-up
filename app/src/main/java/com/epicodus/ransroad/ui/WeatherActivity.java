@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.epicodus.ransroad.adapter.WeatherListAdapter;
 import com.epicodus.ransroad.models.Weather;
 import com.epicodus.ransroad.services.DarkSkyService;
+import com.epicodus.ransroad.services.ZipCodeAPIService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,12 +45,15 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         mWeatherTitleTextView.setTypeface(seasideFont);
 
         Intent intent = getIntent();
-        String latitude = intent.getStringExtra("latitude");
-        String longitude = intent.getStringExtra("longitude");
+        String zipcode = intent.getStringExtra("zipcode");
+//        String latitude = intent.getStringExtra("latitude");
+//        String longitude = intent.getStringExtra("longitude");
 
         mGetClothingButton.setOnClickListener(this);
 
-        getWeather(latitude, longitude);
+//        Will get zip code shortly...
+        getLatLong(zipcode);
+//        getWeather(latitude, longitude);
     }
 
     @Override
@@ -57,6 +62,30 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         startActivity(intent);
     }
 
+
+
+    private void getLatLong(String zipcode) {
+        final ZipCodeAPIService zipCodeAPIService = new ZipCodeAPIService();
+        zipCodeAPIService.findLatLong(zipcode, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    String jsonData = response.body().string();
+                    Log.v(TAG, jsonData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
+//    Put getWeather in the getLatLong function...? Thanks Java for running one line at a time, yeah?
     private void getWeather(String latitude, String longitude) {
         final DarkSkyService darkSkyService = new DarkSkyService();
         String location = latitude + "," + longitude;

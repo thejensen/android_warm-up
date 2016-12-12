@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.titleTextView) TextView mTitleTextView;
     @Bind(R.id.getWeatherButton) Button mGetWeatherButton;
+    @Bind(R.id.zipcodeEditText) EditText mZipcodeEditText;
     @Bind(R.id.latitudeEditText) EditText mLatitudeEditText;
     @Bind(R.id.longitudeEditText) EditText mLongitudeEditText;
     @Bind(R.id.poweredByTextView) TextView mPoweredByTextView;
@@ -78,20 +79,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == mGetWeatherButton) {
-            String latitude = mLatitudeEditText.getText().toString();
-            String longitude = mLongitudeEditText.getText().toString();
-            if(mLatitudeEditText.getText().toString().length() == 0) {
-                mLatitudeEditText.setError("Latitude is required");
-            }
-            else if(mLongitudeEditText.getText().toString().length() == 0) {
-                mLongitudeEditText.setError("Longitude is required");
-            }
-            else {
+            String zipcode = mZipcodeEditText.getText().toString();
+//            String latitude = mLatitudeEditText.getText().toString();
+//            String longitude = mLongitudeEditText.getText().toString();
+//            if(mLatitudeEditText.getText().toString().length() == 0) {
+//                mLatitudeEditText.setError("Latitude is required");
+//            }
+//            else if(mLongitudeEditText.getText().toString().length() == 0) {
+//                mLongitudeEditText.setError("Longitude is required");
+//            }
+//            else {
                 Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
-                intent.putExtra("latitude", latitude);
-                intent.putExtra("longitude", longitude);
+                intent.putExtra("zipcode", zipcode);
+//                intent.putExtra("latitude", latitude);
+//                intent.putExtra("longitude", longitude);
                 startActivity(intent);
-            }
+//            }
         }
         if (v == mPoweredByTextView) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW,

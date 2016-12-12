@@ -36,6 +36,3 @@ public class ZipCodeAPIService {
     }
 
 }
-
-
-//https://www.zipcodeapi.com/rest/D3ux9BdArhcSljQ3pMN73rz9oC7MJZln2QUcr7NSp0LKjBNJoARs2rBr3JeNIzaL/info.json/97211/degrees

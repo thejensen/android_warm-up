@@ -51,7 +51,6 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
         android:ems="10"
         android:id="@+id/latitudeEditText"
         android:hint=" latitude"
@@ -63,7 +62,6 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
         android:ems="10"
         android:id="@+id/longitudeEditText"
         android:hint=" longitude"
@@ -102,5 +100,17 @@
         android:layout_marginTop="45dp"
         android:layout_below="@+id/poweredByTextView"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@+id/loginTextView"
+        android:layout_alignRight="@+id/latitudeEditText"
+        android:layout_alignEnd="@+id/latitudeEditText"
+        android:layout_marginTop="58dp"
+        android:id="@+id/zipcodeEditText"
+        android:hint="zip code"
+        android:background="@color/colorPrimaryLight" />
 
 </RelativeLayout>
