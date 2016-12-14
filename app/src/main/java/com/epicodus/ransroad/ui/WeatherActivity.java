@@ -1,6 +1,5 @@
 package com.epicodus.ransroad.ui;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -10,17 +9,17 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.support.v7.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.ransroad.Constants;
+import com.epicodus.ransroad.adapter.LocationListAdapter;
 import com.epicodus.ransroad.adapter.WeatherListAdapter;
 import com.epicodus.ransroad.models.Location;
 import com.epicodus.ransroad.models.Weather;
@@ -46,7 +45,9 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
     @Bind(R.id.weatherTitleTextView) TextView mWeatherTitleTextView;
     @Bind(R.id.getClothingButton) Button mGetClothingButton;
     @Bind(R.id.weatherRecyclerView) RecyclerView mWeatherRecyclerView;
+    @Bind(R.id.locationRecyclerView) RecyclerView mLocationRecyclerView;
     private WeatherListAdapter mAdapter;
+    private LocationListAdapter mLocationAdapter;
 
     public ArrayList<Weather> mWeathers = new ArrayList<>();
     public ArrayList<Location> mLocations = new ArrayList<>();
@@ -163,6 +164,8 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WeatherActivity.this);
                         mWeatherRecyclerView.setLayoutManager(layoutManager);
                         mWeatherRecyclerView.setHasFixedSize(true);
+
+//
                     }
                 });
             }

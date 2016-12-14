@@ -23,7 +23,7 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
     private ArrayList<Location> mLocations = new ArrayList<>();
     private Context mContext;
 
-    public LocationListAdapter(Context mContext, ArrayList<Location> mLocations) {
+    public LocationListAdapter(ArrayList<Location> locations, Context context) {
         this.mContext = mContext;
         this.mLocations = mLocations;
     }

@@ -1,10 +1,7 @@
 package com.epicodus.ransroad.services;
 
-import android.util.Log;
-
 import com.epicodus.ransroad.Constants;
 import com.epicodus.ransroad.models.Location;
-import com.epicodus.ransroad.models.Weather;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,7 +60,6 @@ public class ZipCodeAPIService {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            throw new IndexOutOfBoundsException("Blarg!!!!");
         } catch (JSONException e) {
             e.printStackTrace();
         }
