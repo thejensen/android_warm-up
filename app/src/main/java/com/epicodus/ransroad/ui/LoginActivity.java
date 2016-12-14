@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         };
+        createAuthProgressDialog();
     }
 
     private void createAuthProgressDialog() {
@@ -102,6 +103,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             mPasswordEditText.setError("Password cannot be blank");
             return;
         }
+
+        mAuthProgressDialog.show();
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
