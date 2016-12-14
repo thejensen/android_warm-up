@@ -22,6 +22,8 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+// TODO: Create account activity includes both a create account AND login dialog, instead of two pages. Distinguish the style from MyRestaurants... ;)
+
 public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = CreateAccountActivity.class.getSimpleName();
 
