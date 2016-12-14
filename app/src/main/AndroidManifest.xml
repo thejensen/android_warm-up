@@ -17,11 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WeatherActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.ransroad.ui.MainActivity" />
-        </activity>
+        <activity android:name=".WeatherActivity"/>
         <activity android:name=".ClothingListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
