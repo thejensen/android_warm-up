@@ -63,6 +63,7 @@ public class ZipCodeAPIService {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            throw new IndexOutOfBoundsException("Blarg!!!!");
         } catch (JSONException e) {
             e.printStackTrace();
         }
