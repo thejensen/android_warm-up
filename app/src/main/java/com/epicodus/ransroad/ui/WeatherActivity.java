@@ -125,7 +125,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
                         public void run() {
                             WeatherActivity.this.runOnUiThread(new Runnable() {
                                 public void run() {
-                                    Toast.makeText(WeatherActivity.this, "Sorry, your zip code was invalid. Please use the search bar again to try a new zip code.", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(WeatherActivity.this, "Sorry, the zip code entered is invalid. Please use the search bar again to try a new zip code.", Toast.LENGTH_LONG).show();
                                 }
                             });
                         }
