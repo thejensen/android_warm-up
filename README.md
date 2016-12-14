@@ -27,7 +27,9 @@ UX bugs
 * _Wish List needs its own layout to distinguish it from the suggested bike gear list._
 * _List of suggested Bike Ride items don't appear clickable_
 * _User who is authenticated should not see links to log in or create an account. (I want unauthed users to have access to basic functionality.)_
-* _Users dont exactly know what the app does so..._
+* _Users don't exactly know what the app does so, let's work on copy!_
+* _If a Wish List has no items in it, the user is presented with a blank screen, womp womp._
+* _Since it takes a minute for the login or the API to load weather data, the user should know their info is on the way._
 
 ## Future Development
 
