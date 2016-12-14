@@ -1,5 +1,6 @@
 package com.epicodus.ransroad.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -44,7 +45,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
 
     @Bind(R.id.weatherTitleTextView) TextView mWeatherTitleTextView;
     @Bind(R.id.getClothingButton) Button mGetClothingButton;
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.weatherRecyclerView) RecyclerView mWeatherRecyclerView;
     private WeatherListAdapter mAdapter;
 
     public ArrayList<Weather> mWeathers = new ArrayList<>();
@@ -158,10 +159,10 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
                     @Override
                     public void run() {
                         mAdapter = new WeatherListAdapter(mWeathers, getApplicationContext());
-                        mRecyclerView.setAdapter(mAdapter);
+                        mWeatherRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WeatherActivity.this);
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
+                        mWeatherRecyclerView.setLayoutManager(layoutManager);
+                        mWeatherRecyclerView.setHasFixedSize(true);
                     }
                 });
             }
