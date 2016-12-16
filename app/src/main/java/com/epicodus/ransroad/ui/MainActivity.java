@@ -47,11 +47,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mSharedPreferences.edit();
 
-//        TODO: Would ultimately like the user to be able to log out of the Weather activity, but see weather right away if they've already searched a zip code or is authenticated.
-//        if (mSharedPreferences != null) {
-//            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
-//            startActivity(intent);
-//        }
+        if (mSharedPreferences != null) {
+            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
+            startActivity(intent);
+        }
 
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
         mTitleTextView.setTypeface(seasideFont);
@@ -97,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String zipcode = mZipcodeEditText.getText().toString();
             if (!(zipcode).equals("")) {
                 addToSharedPreferences(zipcode);
+            } else {
+                mZipcodeEditText.setError("The weather needs to know where you are. ;)");
             }
             Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
             startActivity(intent);

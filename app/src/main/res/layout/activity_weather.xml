@@ -38,12 +38,6 @@
         android:layout_centerHorizontal="true" />
 
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/weatherTitleTextView"
-        android:id="@+id/recyclerView"/>
-
     <Button
         android:text="Get Clothing Suggestions"
         android:layout_width="match_parent"
@@ -53,4 +47,21 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/locationRecyclerView"
+        android:layout_below="@+id/weatherTitleTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/weatherRecyclerView"
+        android:layout_above="@+id/getClothingButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
