@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -34,9 +35,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.createAccountTextView) TextView mCreateAccountTextView;
     @Bind(R.id.loginTextView) TextView mLoginTextView;
 
-//    private FirebaseAuth mAuth;
-//    private FirebaseAuth.AuthStateListener mAuthListener;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (mSharedPreferences.contains(Constants.PREFERENCES_AUTHENTICATED)) {
             String value = mSharedPreferences.getString(Constants.PREFERENCES_AUTHENTICATED, "");
 
+            Log.d(TAG, "SharedPref Name is: " + value);
             getSupportActionBar().setTitle("Welcome, " + value + "!");
             mCreateAccountTextView.setVisibility(View.GONE);
             mLoginTextView.setVisibility(View.GONE);
@@ -117,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();
-        mEditor.remove(Constants.PREFERENCES_AUTHENTICATED);
+        mEditor.remove(Constants.PREFERENCES_AUTHENTICATED).apply();
         Intent intent = new Intent(MainActivity.this, MainActivity.class);
         Toast.makeText(MainActivity.this, "You are now logged out. Until next time!", Toast.LENGTH_LONG).show();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
