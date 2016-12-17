@@ -2,9 +2,10 @@ package com.epicodus.ransroad.ui;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,8 @@ import butterknife.ButterKnife;
 public class ClothingDetailFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = ClothingDetailFragment.class.getSimpleName();
 
+    private SharedPreferences mSharedPreferences;
+
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;
 
@@ -55,6 +58,8 @@ public class ClothingDetailFragment extends Fragment implements View.OnClickList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mClothing = Parcels.unwrap(getArguments().getParcelable("clothing"));
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
     }
 
     @Override
@@ -81,24 +86,34 @@ public class ClothingDetailFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (v == mAddToWishListButton) {
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            String uid = user.getUid();
+            if (mSharedPreferences.contains(Constants.PREFERENCES_AUTHENTICATED)) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = user.getUid();
 
-            DatabaseReference clothingItemRef = FirebaseDatabase
-                    .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEMS)
-                    .child(uid);
+                DatabaseReference clothingItemRef = FirebaseDatabase
+                        .getInstance()
+                        .getReference(Constants.FIREBASE_CHILD_CLOTHING_ITEMS)
+                        .child(uid);
 
-            DatabaseReference pushRef = clothingItemRef.push();
-            String pushId = pushRef.getKey();
-            mClothing.setPushId(pushId);
-            pushRef.setValue(mClothing);
+                DatabaseReference pushRef = clothingItemRef.push();
+                String pushId = pushRef.getKey();
+                mClothing.setPushId(pushId);
+                pushRef.setValue(mClothing);
 
-            Toast.makeText(getContext(), "Saved to Wish List", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Saved to Wish List", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getContext(), "Sorry, you need to log in to save items to your Wish List", Toast.LENGTH_SHORT).show();
+            }
         }
         if (v == mWishListButton) {
-            Intent intent = new Intent(getActivity(), WishListActivity.class);
-            startActivity(intent);
+            if (mSharedPreferences.contains(Constants.PREFERENCES_AUTHENTICATED)) {
+                Intent intent = new Intent(getActivity(), WishListActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getActivity(), "You need to login, yo!", Toast.LENGTH_SHORT).show();
+//                TODO: dialog login/create account
+            }
+
         }
     }
 
