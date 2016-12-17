@@ -59,6 +59,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         mAuth = FirebaseAuth.getInstance();
         createAuthStateListener();
         createAuthProgressDialog();
+
     }
 
     @Override
@@ -136,7 +137,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
     private void addAuthStateToSharedPreferences(String name) {
         mEditor.putString(Constants.PREFERENCES_AUTHENTICATED, name);
-        Log.v(TAG, "User saved to shared prefs: " + mSharedPreferences.getString(Constants.PREFERENCES_AUTHENTICATED, name));
+        mEditor.apply();
     }
 
     private boolean isValidEmail(String email) {

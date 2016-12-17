@@ -6,7 +6,6 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,12 +18,12 @@ import android.widget.Toast;
 
 import com.epicodus.ransroad.Constants;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = MainActivity.class.getSimpleName();
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
 
@@ -35,8 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.createAccountTextView) TextView mCreateAccountTextView;
     @Bind(R.id.loginTextView) TextView mLoginTextView;
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+//    private FirebaseAuth mAuth;
+//    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +47,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mEditor = mSharedPreferences.edit();
 
         // TODO: figure out logout... maybe if shared preferences does not contain username, then they go to main activity, and shared prefs has to contain BOTH loc and un to skip home screen.
-//        if (mSharedPreferences.contains(Constants.PREFERENCES_LOCATION_KEY)) {
-//            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
-//            startActivity(intent);
-//        }
+        if (mSharedPreferences.contains(Constants.PREFERENCES_AUTHENTICATED)) {
+            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
+            startActivity(intent);
+        }
 
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
         mTitleTextView.setTypeface(seasideFont);
@@ -61,33 +60,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mCreateAccountTextView.setOnClickListener(this);
         mLoginTextView.setOnClickListener(this);
 
-        mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
-                    mCreateAccountTextView.setVisibility(View.GONE);
-                    mLoginTextView.setVisibility(View.GONE);
-                } else {
+        if (mSharedPreferences.contains(Constants.PREFERENCES_AUTHENTICATED)) {
+            String value = mSharedPreferences.getString(Constants.PREFERENCES_AUTHENTICATED, "");
 
-                }
-            }
-        };
-    }
+            getSupportActionBar().setTitle("Welcome, " + value + "!");
+            mCreateAccountTextView.setVisibility(View.GONE);
+            mLoginTextView.setVisibility(View.GONE);
+        } else {
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
         }
     }
 
@@ -137,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();
+        mEditor.remove(Constants.PREFERENCES_AUTHENTICATED);
         Intent intent = new Intent(MainActivity.this, MainActivity.class);
         Toast.makeText(MainActivity.this, "You are now logged out. Until next time!", Toast.LENGTH_LONG).show();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
