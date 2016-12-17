@@ -164,8 +164,6 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WeatherActivity.this);
                         mWeatherRecyclerView.setLayoutManager(layoutManager);
                         mWeatherRecyclerView.setHasFixedSize(true);
-
-//
                     }
                 });
             }
