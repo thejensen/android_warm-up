@@ -1,14 +1,17 @@
 package com.epicodus.ransroad.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.ransroad.Constants;
 import com.epicodus.ransroad.adapter.ClothingListAdapter;
@@ -22,13 +25,13 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class ClothingListActivity extends AppCompatActivity implements View.OnClickListener {
+    private SharedPreferences mSharedPreferences;
+
     @Bind(R.id.clothingRecyclerView) RecyclerView mClothingRecyclerView;
     @Bind(R.id.wishListButton) Button mWishListButton;
 
     private ClothingListAdapter mAdapter;
-
     public ArrayList<Clothing> mClothingItems = new ArrayList<>();
-
     private DatabaseReference mClothingItemReference;
 
     @Bind(R.id.clothingTitleTextView) TextView mClothingTitleTextView;
@@ -66,6 +69,8 @@ public class ClothingListActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_clothing);
         ButterKnife.bind(this);
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
         mWishListTitleTextView.setVisibility(View.GONE);
 
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
@@ -83,8 +88,14 @@ public class ClothingListActivity extends AppCompatActivity implements View.OnCl
 
     public void onClick(View v) {
         if (v == mWishListButton) {
-            Intent intent = new Intent(ClothingListActivity.this, WishListActivity.class);
-            startActivity(intent);
+            if (mSharedPreferences.contains(Constants.PREFERENCES_AUTHENTICATED)) {
+                Intent intent = new Intent(ClothingListActivity.this, WishListActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(ClothingListActivity.this, "You need to login, yo!", Toast.LENGTH_SHORT).show();
+//                TODO: dialog login/create account
+            }
+
         }
     }
 }
