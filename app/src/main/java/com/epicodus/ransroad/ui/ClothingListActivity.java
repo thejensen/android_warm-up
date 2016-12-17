@@ -70,6 +70,7 @@ public class ClothingListActivity extends AppCompatActivity implements View.OnCl
         ButterKnife.bind(this);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        setContentView(R.layout.fragment_login_dialog);
 
         mWishListTitleTextView.setVisibility(View.GONE);
 
