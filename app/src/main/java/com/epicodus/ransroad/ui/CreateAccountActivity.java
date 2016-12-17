@@ -2,6 +2,8 @@ package com.epicodus.ransroad.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +28,8 @@ import butterknife.ButterKnife;
 
 public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = CreateAccountActivity.class.getSimpleName();
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
 
     @Bind(R.id.createUserButton) Button mCreateUserButton;
     @Bind(R.id.nameEditText) EditText mNameEditText;
@@ -44,6 +48,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         ButterKnife.bind(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
 
         mLoginTextView.setOnClickListener(this);
         mCreateUserButton.setOnClickListener(this);

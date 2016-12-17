@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mSharedPreferences.edit();
 
-        if (mSharedPreferences != null) {
+        if (mSharedPreferences.contains(Constants.PREFERENCES_LOCATION_KEY)) {
             Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
             startActivity(intent);
         }
