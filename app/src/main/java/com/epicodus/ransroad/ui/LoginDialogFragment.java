@@ -61,7 +61,7 @@ public class LoginDialogFragment extends DialogFragment {
             }
         };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AnimatedDialogTheme);
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
         builder.setView(inflater.inflate(R.layout.fragment_login_dialog, null))
@@ -100,7 +100,7 @@ public class LoginDialogFragment extends DialogFragment {
                     Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
                     if (!task.isSuccessful()) {
                         Log.w(TAG, "signInWithEmail", task.getException());
-                        Toast.makeText(activity, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, "Your login info doesn't match what we have. Please create an account!", Toast.LENGTH_LONG).show();
                         return;
                     }
                 }

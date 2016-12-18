@@ -8,5 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AnimatedDialogTheme" parent="@android:style/Theme.Material.Light.Dialog">
+        <item name="android:windowAnimationStyle">@style/MyAnimation.Window</item>
+    </style>
+
+    <style name="MyAnimation.Window" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@animator/anim_in</item>
+        <item name="android:windowExitAnimation">@animator/anim_out</item>
+    </style>
+
     <style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
 </resources>
