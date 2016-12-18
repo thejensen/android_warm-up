@@ -1,6 +1,7 @@
 package com.epicodus.ransroad.ui;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -10,17 +11,23 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.epicodus.ransroad.Constants;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,7 +80,7 @@ public class LoginDialogFragment extends DialogFragment {
                             return;
                         }
 
-                        loginWithPassword(email, password);
+                        loginWithPassword(email, password, getActivity());
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -84,8 +91,20 @@ public class LoginDialogFragment extends DialogFragment {
         return builder.create();
     }
 
-    private void loginWithPassword(String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password);
+    private void loginWithPassword(String email, String password, final Activity activity) {
+        mAuth.signInWithEmailAndPassword(email, password)
+             .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                    if (!task.isSuccessful()) {
+                        Log.w(TAG, "signInWithEmail", task.getException());
+                        Toast.makeText(activity, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
+            });
     }
 
     private void addAuthStateToSharedPreferences(String name) {
