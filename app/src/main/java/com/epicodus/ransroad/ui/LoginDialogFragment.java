@@ -7,15 +7,12 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +25,7 @@ public class LoginDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View view = View.inflate(getActivity(), R.layout.fragment_login_dialog, null);
         ButterKnife.bind(this, view);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -41,15 +39,15 @@ public class LoginDialogFragment extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         String email = mEmailDialogEditText.getText().toString();
                         String password = mPasswordDialogEditText.getText().toString();
-                        Log.v(TAG, "Email issss: " + email);
-                        Log.v(TAG, "Password issss: " + password);
+
+
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         LoginDialogFragment.this.getDialog().cancel();
                     }
-                });
+                }).setView(view);
         return builder.create();
     }
 }
