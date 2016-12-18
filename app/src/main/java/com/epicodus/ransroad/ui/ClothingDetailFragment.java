@@ -102,7 +102,7 @@ public class ClothingDetailFragment extends Fragment implements View.OnClickList
 
                 Toast.makeText(getContext(), "Saved to Wish List", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getContext(), "Sorry, you need to log in to save items to your Wish List", Toast.LENGTH_SHORT).show();
+                alertUserToLogin();
             }
         }
         if (v == mWishListButton) {
@@ -110,12 +110,14 @@ public class ClothingDetailFragment extends Fragment implements View.OnClickList
                 Intent intent = new Intent(getActivity(), WishListActivity.class);
                 startActivity(intent);
             } else {
-                Toast.makeText(getActivity(), "You need to login, yo!", Toast.LENGTH_SHORT).show();
-//                TODO: dialog login/create account
+                alertUserToLogin();
             }
 
         }
     }
 
-
+    private void alertUserToLogin() {
+        LoginDialogFragment dialogFragment = new LoginDialogFragment();
+        dialogFragment.show(getActivity().getFragmentManager(), "login_dialog");
+    }
 }

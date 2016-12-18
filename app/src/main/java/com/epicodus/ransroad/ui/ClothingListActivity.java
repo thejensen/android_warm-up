@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.epicodus.ransroad.Constants;
 import com.epicodus.ransroad.adapter.ClothingListAdapter;
@@ -92,7 +91,6 @@ public class ClothingListActivity extends AppCompatActivity implements View.OnCl
                 Intent intent = new Intent(ClothingListActivity.this, WishListActivity.class);
                 startActivity(intent);
             } else {
-                Toast.makeText(ClothingListActivity.this, "You need to login, yo!", Toast.LENGTH_SHORT).show();
                 alertUserToLogin();
             }
 

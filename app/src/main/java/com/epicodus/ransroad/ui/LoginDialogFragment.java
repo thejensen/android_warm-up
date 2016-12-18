@@ -3,10 +3,10 @@ package com.epicodus.ransroad.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
-import android.os.Bundle;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.content.DialogInterface;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 
 /**
