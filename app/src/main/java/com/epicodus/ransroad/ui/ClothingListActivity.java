@@ -70,7 +70,6 @@ public class ClothingListActivity extends AppCompatActivity implements View.OnCl
         ButterKnife.bind(this);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        setContentView(R.layout.fragment_login_dialog);
 
         mWishListTitleTextView.setVisibility(View.GONE);
 
@@ -94,9 +93,14 @@ public class ClothingListActivity extends AppCompatActivity implements View.OnCl
                 startActivity(intent);
             } else {
                 Toast.makeText(ClothingListActivity.this, "You need to login, yo!", Toast.LENGTH_SHORT).show();
-//                TODO: dialog login/create account
+                alertUserToLogin();
             }
 
         }
+    }
+
+    private void alertUserToLogin() {
+        LoginDialogFragment dialogFragment = new LoginDialogFragment();
+        dialogFragment.show(getFragmentManager(), "login_dialog");
     }
 }
