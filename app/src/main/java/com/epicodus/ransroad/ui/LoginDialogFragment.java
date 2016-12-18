@@ -6,15 +6,14 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.epicodus.ransroad.Constants;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,8 +21,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,10 +50,6 @@ public class LoginDialogFragment extends DialogFragment {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     addAuthStateToSharedPreferences(user.getDisplayName());
-                    Intent intent = new Intent(getActivity(), WishListActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-//                    finish();
                 }
             }
         };
@@ -70,6 +63,16 @@ public class LoginDialogFragment extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         String email = mEmailDialogEditText.getText().toString();
                         String password = mPasswordDialogEditText.getText().toString();
+
+                        if (email.equals("")) {
+                            Toast.makeText(getActivity(), "Email address was blank, try again!", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (password.equals("")) {
+                            Toast.makeText(getActivity(), "Password was blank, woops!", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
                         loginWithPassword(email, password);
                     }
                 })
@@ -86,7 +89,6 @@ public class LoginDialogFragment extends DialogFragment {
     }
 
     private void addAuthStateToSharedPreferences(String name) {
-        Log.d(TAG, "add to shared prefs at login: " + name);
         mEditor.putString(Constants.PREFERENCES_AUTHENTICATED, name);
         mEditor.apply();
     }
