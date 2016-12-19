@@ -65,9 +65,10 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         mGetClothingButton.setOnClickListener(this);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, "");
         if (mRecentAddress != null) {
             getLatLong(mRecentAddress);
+            Log.v(TAG, "Weather activity, mRecentAddress is: " + mRecentAddress);
         }
     }
 
@@ -145,7 +146,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
     private void getWeather(String latitude, String longitude) {
         final DarkSkyService darkSkyService = new DarkSkyService();
         String location = latitude + "," + longitude;
-        Log.v(TAG, "getting to the weather...");
+        Log.v(TAG, "Getting to the weather...");
         darkSkyService.findWeather(location, new Callback() {
 
             @Override

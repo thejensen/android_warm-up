@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mSharedPreferences.edit();
 
-        // TODO: figure out logout... maybe if shared preferences does not contain username, then they go to main activity, and shared prefs has to contain BOTH loc and un to skip home screen.
         if (mSharedPreferences.contains(Constants.PREFERENCES_AUTHENTICATED) && mSharedPreferences.contains(Constants.PREFERENCES_LOCATION_KEY)) {
             Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
             startActivity(intent);
@@ -126,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void addToSharedPreferences(String zipcode) {
         mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, zipcode).apply();
+        Log.v(TAG, "Zip in shared preferences: " + mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, ""));
     }
 
 }
