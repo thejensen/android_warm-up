@@ -76,11 +76,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String zipcode = mZipcodeEditText.getText().toString();
             if (!(zipcode).equals("")) {
                 addToSharedPreferences(zipcode);
+                Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
+                startActivity(intent);
             } else {
                 mZipcodeEditText.setError("The weather needs to know where you are. ;)");
             }
-            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
-            startActivity(intent);
         }
         if (v == mPoweredByTextView) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW,

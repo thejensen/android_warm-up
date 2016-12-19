@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -144,6 +145,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
     private void getWeather(String latitude, String longitude) {
         final DarkSkyService darkSkyService = new DarkSkyService();
         String location = latitude + "," + longitude;
+        Log.v(TAG, "getting to the weather...");
         darkSkyService.findWeather(location, new Callback() {
 
             @Override
@@ -164,6 +166,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WeatherActivity.this);
                         mWeatherRecyclerView.setLayoutManager(layoutManager);
                         mWeatherRecyclerView.setHasFixedSize(true);
+                        Log.v(TAG, "Weather is working?!");
                     }
                 });
             }
