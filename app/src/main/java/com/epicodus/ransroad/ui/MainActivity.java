@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -61,12 +60,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (mSharedPreferences.contains(Constants.PREFERENCES_AUTHENTICATED)) {
             String value = mSharedPreferences.getString(Constants.PREFERENCES_AUTHENTICATED, "");
 
-            Log.d(TAG, "SharedPref Name is: " + value);
             getSupportActionBar().setTitle("Welcome, " + value + "!");
             mCreateAccountTextView.setVisibility(View.GONE);
             mLoginTextView.setVisibility(View.GONE);
-        } else {
+        }
 
+        if (mSharedPreferences.contains(Constants.PREFERENCES_LOCATION_KEY)) {
+            mZipcodeEditText.setVisibility(View.GONE);
         }
     }
 
@@ -76,11 +76,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String zipcode = mZipcodeEditText.getText().toString();
             if (!(zipcode).equals("")) {
                 addToSharedPreferences(zipcode);
-                Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
-                startActivity(intent);
             } else {
                 mZipcodeEditText.setError("The weather needs to know where you are. ;)");
             }
+            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
+            startActivity(intent);
         }
         if (v == mPoweredByTextView) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
