@@ -17,16 +17,14 @@ _Android Studio must be installed._
 ## Known Bugs
 
 Functional bugs
-* _Firebase User Profile bug: when a user creates an account for the first time, they will be greeted as "Welcome, null." If they log out and log back in again, they are greeted by their Firebase profile name._
-* _If user is unauthenticated, adding items to the wish list and going to the wish list activity crash that activity._
+* _If a user logs in with the dialog, they are logged in, but have to click log in one more time for the app to register their authentication status._
+* _Wish list includes 'play' arrows that suggest they are clickable, but are not._
 
 UX bugs
-* _Wish List needs its own layout to distinguish it from the suggested bike gear list._
-* _List of suggested Bike Ride items don't appear clickable_
-* _User who is authenticated should not see links to log in or create an account. (I want unauthed users to have access to basic functionality.)_
 * _Users don't exactly know what the app does so, let's work on copy!_
 * _If a Wish List has no items in it, the user is presented with a blank screen, womp womp._
 * _Since it takes a minute for the login or the API to load weather data, the user should know their info is on the way._
+* _Create account and login links on home screen are camouflaged by background image._
 
 ## Future Development
 

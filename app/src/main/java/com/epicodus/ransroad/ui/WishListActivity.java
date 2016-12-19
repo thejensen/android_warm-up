@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epicodus.ransroad.Constants;
@@ -31,7 +30,6 @@ public class WishListActivity extends AppCompatActivity {
     @Bind(R.id.clothingTitleTextView) TextView mClothingTitleTextView;
     @Bind(R.id.wishListTitleTextView) TextView mWishListTitleTextView;
     @Bind(R.id.wishListButton) Button mWishListButton;
-    @Bind(R.id.moreIconImageView) ImageView mMoreIconImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +42,6 @@ public class WishListActivity extends AppCompatActivity {
 
         mWishListButton.setVisibility(GONE);
         mClothingTitleTextView.setVisibility(GONE);
-        mMoreIconImageView.setVisibility(GONE);
 
         Typeface seasideFont = Typeface.createFromAsset(getAssets(), "fonts/seaside_font.ttf");
         mWishListTitleTextView.setTypeface(seasideFont);
