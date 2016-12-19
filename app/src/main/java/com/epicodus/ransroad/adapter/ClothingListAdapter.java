@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 import com.epicodus.ransroad.models.Clothing;
 import com.epicodus.ransroad.ui.ClothingDetailActivity;
-import com.epicodus.ransroad.ui.ClothingListActivity;
 import com.epicodus.ransroad.ui.R;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 

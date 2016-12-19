@@ -5,15 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/clothingTitleTextView"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:id="@+id/clothingItemTextView"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-        android:fontFamily="sans-serif"
-        android:textIsSelectable="false" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/clothingTitleTextView"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:id="@+id/clothingItemTextView"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+            android:fontFamily="sans-serif"
+            android:textIsSelectable="false" />
+
+        <ImageView
+            android:id="@+id/moreIconImageView"
+            android:src="@drawable/ic_play_arrow_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:layout_marginRight="24dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="24dp" />
+
+    </RelativeLayout>
+
 
 </LinearLayout>
